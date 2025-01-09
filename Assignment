@@ -1,0 +1,48 @@
+                                        Asssignment 2
+4) implementation registration process with promise?
+A registration process is a common scenario in web development where user information (like username, password) is collected, validated, and stored in a database. 
+Using Promises in JavaScript allows handling such asynchronous processes more efficiently.
+
+
+function registerUser(username, password) {
+    return new Promise((resolve, reject) => {
+        console.log("Processing registration...");
+
+        // Simulating async operation with setTimeout
+        setTimeout(() => {
+            if (username && password) {
+                // Resolve the promise if valid data is provided
+                resolve(`User "${username}" registered successfully!`);
+            } else {
+                // Reject the promise if data is invalid
+                reject("Registration failed: Username and password are required.");
+            }
+        }, 2000); // Simulate 2 seconds delay
+    });
+}
+
+// Test the registration process
+registerUser("Thanu", "password1243")
+    .then((message) => {
+        console.log("Success:", message);
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+
+// Test with missing information
+registerUser(" ", "")
+    .then((message) => {
+        console.log("Success:", message);
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+
+OUTPUT:
+Processing registration...
+Processing registration...
+Success:
+User "Thanu" registered successfully!
+Error:
+Registration failed: Username and password are required.
